@@ -14,6 +14,8 @@ const reqGauge = new client.Gauge({
   help: 'Number of active requests'
 })
 
+
+
 const reqMonitor = new client.Histogram({
   name: 'http_request_duration_ms',
   help: 'Duration of HTTP requests in ms',
