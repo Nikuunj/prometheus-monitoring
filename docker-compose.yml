@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  node-app: 
+    build: ./
+    ports: 
+      - "3000:3000"
+    networks: 
+      -monitoring
+
+  prometheus:
+    image: prom/prometheus:lates
+    volumes:
+      - ./:/etc/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+networks: 
+  monitoring:
