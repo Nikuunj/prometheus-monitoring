@@ -10,13 +10,22 @@ services:
       -monitoring
 
   prometheus:
-    image: prom/prometheus:lates
+    image: prom/prometheus:latest
     volumes:
       - ./:/etc/prometheus
     ports:
       - "9090:9090"
     networks:
       - monitoring
+
+  grafana: 
+    image: grafana/grafana:latest
+    ports: 
+      - "3001:3000"
+    networks: 
+      - monitoring
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
 
 networks: 
   monitoring:
